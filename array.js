@@ -40,8 +40,31 @@ class MyArray{
         }
         delete this.data[this.length-1];
         this.length--;
-            
     }
+
+    shift(){
+        // Tu código aquí 👈
+        const deletedItem = this.data[0];
+        delete this.data[0];
+        for (let i = 0; i < this.length; i++) {
+          this.data[i] = this.data[i + 1]
+        }
+        delete this.data[this.length - 1];
+        this.length--;
+        return deletedItem;
+        
+      }
+
+    unshift(item) {
+        if (item) {
+          for (let i = this.length; i > 0; i--) {
+            this.data[i] = this.data[i - 1];
+          }
+          this.data[0] = item;
+          this.length++;
+        }
+        return this.length;
+      }
 }
 
 const myArray = new MyArray();
