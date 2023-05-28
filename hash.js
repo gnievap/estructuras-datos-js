@@ -40,7 +40,7 @@ class HashTable {
         if ( currentBucket ) {
             for ( let i = 0; i < currentBucket.length; i++){
                 if ( currentBucket[i][0] === key ){
-                    const element =  currentBucket[i][1];
+                    const element =  currentBucket[i];
                     currentBucket.splice(i, 1);
                     return element;
                 }
