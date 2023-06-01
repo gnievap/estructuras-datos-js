@@ -55,6 +55,9 @@ class MySinglyLinkedList {
     }
 
     insert(index, value){
+        if ( index === 0 ){
+            return this.prepend(value);
+        }
         if ( index >= this.length ){
             return this.append(value);
         }
@@ -78,6 +81,27 @@ class MySinglyLinkedList {
         }
 
         return currentNode;
+    }
+
+    remove(index){
+        if(index >= this.length) {
+          console.error("index is out of limits of the array");
+        } else if( index == 0) {
+          this.head = this.head.next;
+          this.length--
+        }
+        else if(index  === this.length - 1){
+          const firstPointer = this.getTheIndex(index - 1);
+          firstPointer.next = null;
+          
+          this.tail = firstPointer;
+          this.length--;
+        } else {
+          const firstPointer = this.getTheIndex(index - 1);
+          const pointerToRemove = firstPointer.next;
+          firstPointer.next = pointerToRemove.next;
+          this.length--;
+        }
     }
 }
 
