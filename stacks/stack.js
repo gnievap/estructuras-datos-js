@@ -19,7 +19,7 @@ class Stack{
 
     push(value){
         const newNode = new Node(value);
-        if (this.length == 0 ) {
+        if ( this.isEmpty() ) {
             this.top = newNode;
             this.bottom = newNode;
         }
@@ -30,6 +30,20 @@ class Stack{
         }
         this.length++;
         return this;
+    }
+
+    pop(){
+        if ( !this.isEmpty() ){
+            const topItem = this.top;
+            this.top = this.top.next;
+            this.length--
+            return topItem
+        }
+        return null;
+    }
+
+    isEmpty(){
+        return this.length == 0;
     }
 
 }
