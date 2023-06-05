@@ -43,6 +43,34 @@ class BinarySearchTree{
             }
         }
     }
+
+    search(value) {
+        const node = this.check(value);
+        if(node) {
+          return node;
+        }
+        return new Error("Non-existent value");
+      }
+      check(value) {
+        let currentNode = this.root;
+        if(!currentNode) {
+          return false;
+        }
+        while(true) {
+          if(currentNode.value === value) {
+            return currentNode;
+          }
+          if(value < currentNode.value) {
+            currentNode = currentNode.left;
+          } else {
+            currentNode = currentNode.right;
+          }
+          if(!currentNode) {
+            return false;
+          }
+        }
+      }
+
 }
 
 const tree = new BinarySearchTree();
